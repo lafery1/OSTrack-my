@@ -2,9 +2,12 @@ from collections import OrderedDict
 
 try:
     import wandb
+    WANDB_AVAILABLE = True
 except ImportError:
-    raise ImportError(
-        'Please run "pip install wandb" to install wandb')
+    wandb = None
+    WANDB_AVAILABLE = False
+    # 如果确实需要日志却导入失败，可以给出友好提示，而不是直接崩溃
+    # print("Warning: wandb not installed. Logging to wandb will be disabled.")
 
 
 class WandbWriter:

@@ -73,7 +73,8 @@ class Got10k(BaseVideoDataset):
         self.seq_per_class = self._build_seq_per_class()
 
         self.class_list = list(self.seq_per_class.keys())
-        self.class_list.sort()
+        # self.class_list.sort()
+        self.class_list = sorted([item for item in self.class_list if item is not None])
 
     def get_name(self):
         return 'got10k'
